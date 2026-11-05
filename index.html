@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JobConnect connects talented people with great career opportunities.">
+  <title>JobConnect — Find your next opportunity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
+  <div class="container">
+    <a class="navbar-brand brand" href="#"><span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span> Job<span>Connect</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-lg-3">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#jobs">Find Jobs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
+      </ul>
+      <div class="d-flex gap-2 align-items-center mt-3 mt-lg-0">
+        <button class="btn btn-link text-dark text-decoration-none fw-semibold" data-bs-toggle="modal" data-bs-target="#authModal">Sign in</button>
+        <button class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#postJobModal"><i class="bi bi-plus-lg me-1"></i> Post a job</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero-section" id="home">
+  <div class="container position-relative">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT CHAPTER STARTS HERE</span>
+        <h1 class="hero-title mt-3">Find a job that<br><span>moves you forward.</span></h1>
+        <p class="hero-copy mt-3">Discover opportunities from companies that value your skills, ambition, and ideas.</p>
+        <form id="searchForm" class="search-panel mt-4">
+          <div class="search-field">
+            <i class="bi bi-search"></i>
+            <input id="keywordInput" type="search" placeholder="Job title, skill or company" aria-label="Search jobs">
+          </div>
+          <div class="search-divider"></div>
+          <div class="search-field location-field">
+            <i class="bi bi-geo-alt"></i>
+            <input id="locationInput" type="text" placeholder="City or remote" aria-label="Location">
+          </div>
+          <button class="btn btn-primary search-btn" type="submit">Search jobs <i class="bi bi-arrow-right ms-1"></i></button>
+        </form>
+        <div class="popular-searches mt-3"><span>Popular:</span> <button class="tag-link" data-search="Frontend">Frontend</button><button class="tag-link" data-search="Product">Product</button><button class="tag-link" data-search="Design">Design</button><button class="tag-link" data-search="Remote">Remote</button></div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="hero-visual">
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+          <div class="floating-card card-top"><div class="mini-icon purple"><i class="bi bi-graph-up-arrow"></i></div><div><strong>Career growth</strong><small>Opportunities await</small></div></div>
+          <div class="hero-person"><i class="bi bi-person-workspace"></i></div>
+          <div class="floating-card card-bottom"><div class="avatar-stack"><span>JD</span><span>MK</span><span>AL</span></div><div><strong>2,400+</strong><small>People hired this month</small></div></div>
+          <div class="visual-spark spark-one">✦</div><div class="visual-spark spark-two">✳</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="stats-strip">
+  <div class="container"><div class="row g-3 text-center">
+    <div class="col-4"><strong>12k+</strong><span>Active jobs</span></div>
+    <div class="col-4"><strong>3.5k+</strong><span>Companies</span></div>
+    <div class="col-4"><strong>25k+</strong><span>Career seekers</span></div>
+  </div></div>
+</section>
+
+<main>
+<section class="section-pad" id="jobs">
+  <div class="container">
+    <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3">
+      <div><span class="eyebrow">EXPLORE OPPORTUNITIES</span><h2 class="section-title mt-2">Featured <span>jobs</span></h2><p class="text-muted mb-0">Handpicked roles from teams doing meaningful work.</p></div>
+      <span class="results-count" id="resultsCount">Showing 6 opportunities</span>
+    </div>
+    <div class="filter-bar mt-4">
+      <div class="filter-search"><i class="bi bi-search"></i><input id="inlineSearch" type="search" placeholder="Search by title or company"></div>
+      <select id="categoryFilter" class="form-select" aria-label="Filter by category"><option value="">All categories</option><option>Technology</option><option>Design</option><option>Marketing</option><option>Business</option></select>
+      <select id="typeFilter" class="form-select" aria-label="Filter by job type"><option value="">All job types</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option></select>
+      <select id="sortFilter" class="form-select" aria-label="Sort jobs"><option value="recent">Most recent</option><option value="salary">Salary: high to low</option></select>
+    </div>
+    <div class="row g-4 mt-1" id="jobGrid" aria-live="polite"></div>
+    <div class="text-center mt-5"><button class="btn btn-outline-primary px-4" id="showAllBtn">Explore all opportunities <i class="bi bi-arrow-right ms-1"></i></button></div>
+    <div class="empty-state d-none" id="emptyState"><i class="bi bi-search"></i><h5>No jobs found</h5><p>Try changing your search or filters.</p><button class="btn btn-sm btn-outline-primary" id="clearFilters">Clear filters</button></div>
+  </div>
+</section>
+
+<section class="how-section section-pad" id="how-it-works">
+  <div class="container">
+    <div class="text-center mb-5"><span class="eyebrow">SIMPLE BY DESIGN</span><h2 class="section-title mt-2">Your next job, in <span>3 steps</span></h2><p class="text-muted">A clearer path from searching to starting.</p></div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="step-card"><div class="step-number">01</div><div class="step-icon"><i class="bi bi-person-plus"></i></div><h5>Create your profile</h5><p>Showcase your experience, skills, and the work you want to do.</p></div></div>
+      <div class="col-md-4"><div class="step-card"><div class="step-number">02</div><div class="step-icon"><i class="bi bi-search"></i></div><h5>Discover opportunities</h5><p>Find roles that match your goals, interests, and strengths.</p></div></div>
+      <div class="col-md-4"><div class="step-card"><div class="step-number">03</div><div class="step-icon"><i class="bi bi-send"></i></div><h5>Apply with confidence</h5><p>Submit your application and take the next step in your career.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section"><div class="container"><div class="cta-box"><div><span class="eyebrow text-white-50">FOR EMPLOYERS</span><h2>Meet the people who<br>will move your business forward.</h2><p>Share an opportunity and find your next great teammate.</p></div><button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#postJobModal">Post a job <i class="bi bi-arrow-up-right ms-1"></i></button></div></div></section>
+</main>
+
+<footer class="footer"><div class="container d-flex flex-wrap justify-content-between align-items-center gap-3"><a class="navbar-brand brand text-white" href="#"><span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span> Job<span>Connect</span></a><p class="mb-0">© <span id="year"></span> JobConnect. Built for what’s next.</p><a href="#home" class="back-top">Back to top ↑</a></div></footer>
+
+<!-- Job details modal -->
+<div class="modal fade" id="jobModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content" id="jobModalContent"></div></div></div>
+
+<!-- Apply modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><div><span class="eyebrow">JOB APPLICATION</span><h5 class="modal-title mt-1" id="applyJobTitle">Apply for this role</h5></div><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><form id="applyForm"><div class="modal-body"><input type="hidden" id="applyJobId"><div class="mb-3"><label class="form-label" for="applicantName">Full name</label><input class="form-control" id="applicantName" required></div><div class="mb-3"><label class="form-label" for="applicantEmail">Email address</label><input class="form-control" id="applicantEmail" type="email" required></div><div class="mb-3"><label class="form-label" for="coverLetter">Short cover letter</label><textarea class="form-control" id="coverLetter" rows="4" required placeholder="Tell the employer why you're a good fit..."></textarea></div><div class="form-text">Demo only: your application is saved in this browser.</div></div><div class="modal-footer"><button class="btn btn-primary w-100" type="submit">Submit application <i class="bi bi-send ms-1"></i></button></div></form></div></div></div>
+
+<!-- Auth modal -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><div><span class="eyebrow">WELCOME TO JOBCONNECT</span><h5 class="modal-title mt-1">Sign in</h5></div><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><form id="authForm"><div class="modal-body"><div class="mb-3"><label class="form-label" for="authEmail">Email</label><input class="form-control" type="email" id="authEmail" required></div><div class="mb-3"><label class="form-label" for="authPassword">Password</label><input class="form-control" type="password" id="authPassword" minlength="6" required></div><p class="small text-muted mb-0">Prototype sign-in: creates a local demo session only. Do not use a real password.</p></div><div class="modal-footer"><button class="btn btn-primary w-100" type="submit">Continue</button></div></form></div></div></div>
+
+<!-- Post job modal -->
+<div class="modal fade" id="postJobModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><div><span class="eyebrow">EMPLOYER SPACE</span><h5 class="modal-title mt-1">Create a job listing</h5></div><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><form id="postJobForm"><div class="modal-body"><div class="row g-3"><div class="col-md-6"><label class="form-label" for="newTitle">Job title</label><input class="form-control" id="newTitle" required></div><div class="col-md-6"><label class="form-label" for="newCompany">Company</label><input class="form-control" id="newCompany" required></div><div class="col-md-6"><label class="form-label" for="newLocation">Location</label><input class="form-control" id="newLocation" required></div><div class="col-md-6"><label class="form-label" for="newCategory">Category</label><select class="form-select" id="newCategory"><option>Technology</option><option>Design</option><option>Marketing</option><option>Business</option></select></div><div class="col-md-6"><label class="form-label" for="newType">Job type</label><select class="form-select" id="newType"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option></select></div><div class="col-md-6"><label class="form-label" for="newSalary">Salary range</label><input class="form-control" id="newSalary" placeholder="$50k - $70k"></div><div class="col-12"><label class="form-label" for="newDescription">Job description</label><textarea class="form-control" id="newDescription" rows="4" required></textarea></div></div><p class="small text-muted mt-3 mb-0">Demo only: this listing is stored in your browser's LocalStorage.</p></div><div class="modal-footer"><button class="btn btn-primary w-100" type="submit">Publish job <i class="bi bi-arrow-up-right ms-1"></i></button></div></form></div></div></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="appToast" class="toast align-items-center text-bg-dark border-0" role="status"><div class="d-flex"><div class="toast-body" id="toastMessage">Done.</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/data.js"></script><script src="js/app.js"></script>
+</body></html>
